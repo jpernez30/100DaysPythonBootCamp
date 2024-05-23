@@ -2,10 +2,10 @@
 
 for n in range(1,101):
   if(n%5 == 0 and n%3 == 0):
-    print("FizzBuzz");
+    print("FizzBuzz")
   elif (n%5 == 0):
-    print("Buzz");
+    print("Buzz")
   elif (n%3 == 0):
-    print("Fizz");
+    print("Fizz")
   else:
     print(n)
