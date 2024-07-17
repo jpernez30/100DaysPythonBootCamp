@@ -1,4 +1,4 @@
-rom tkinter import *
+from tkinter import *
 
 
 def button_clicked():
