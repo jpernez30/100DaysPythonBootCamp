@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% from 'bootstrap4/form.html' import render_form %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+        {{ bootstrap.load_css() }}
+    <title>Add Book</title>
+  </head>
+  <body>
+    <h1> Add an anime to rate on your list!</h1>
+    <div>
+    <form action="{{ url_for('add2') }}" method="POST">
+	{{render_form(form)}}
+    </form>
+    </div>
+  </body>
+</html>
