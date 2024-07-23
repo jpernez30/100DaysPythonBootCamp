@@ -51,9 +51,9 @@ def show_post(post_id):
 
 # TODO: add_new_post() to create a new blog post
 
-@app.route("/make-post/")
+@app.route("/new-post",methods=["GET","POST"])
 def add_new_post():
-    return;
+    return render_template("make-post.html")
 
 # TODO: edit_post() to change an existing blog post
 
