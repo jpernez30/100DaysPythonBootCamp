@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Most Common Colors</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Most Common Colors</h1>
+    <ul>
+        {% for color, count, text_color in colors %}
+            <li style="background-color: rgb{{ color }}; color: {{ text_color }};">
+                RGB {{ color }}: {{ count }} times
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('upload_file') }}">Upload another image</a>
+</body>
+</html>
