@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Trivia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background:  linear-gradient(135deg, #1e3c72, #2a5298, #1c92d2, #3a7bd5, #4caf50);
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 600px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #4CAF50;
+        }
+        p {
+            font-size: 18px;
+            color: #333;
+        }
+        .options {
+            margin-bottom: 20px;
+        }
+        .option {
+            display: block;
+            margin: 10px 0;
+        }
+        .result {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ff5722;
+        }
+        .correct {
+            color: #4CAF50;
+        }
+        .incorrect {
+            color: #ff5722;
+        }
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+         {% if not result %}
+        <img src="https://media.giphy.com/media/j3zD4Yhn02sqKOpmPQ/giphy.gif"/>
+         {% endif %}
+        <h1>Random Trivia Question</h1>
+        {% if result %}
+            {% if result == "Correct!"%}
+            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTQ0cTAxOWtidWxjYTdxdGE4empsbGU2M2N1NHd1eHV3OWlnMmwwZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/UXgf6pu1LlQp6CPDi0/giphy.gif"/>
+            <p class="result {{ 'correct' if result == 'Correct!' else 'incorrect' }}">{{ result }}</p>
+            {% else %}
+            <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHdtb2pkeG5ndWd4dGJpamRuMml2MmpwZWprbGtqZXVmeGZ4OWZ2diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/cnlrYuoaoHbQBdqMem/giphy.gif"/>
+            <p>{{ result }}</p>
+            {% endif %}
+
+        {% endif %}
+        <p>{{ question }}</p>
+        <form method="POST">
+            <div class="options">
+                {% for option in options %}
+                    <label class="option">
+                        <input type="radio" name="answer" value="{{ option }}" required> {{ option }}
+                    </label>
+                {% endfor %}
+            </div>
+            <input type="hidden" name="correct_answer" value="{{ correct_answer }}">
+            <button type="submit">Submit Answer</button>
+        </form>
+    </div>
+</body>
+</html>
